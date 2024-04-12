@@ -5,23 +5,22 @@ import java.util.Arrays;
 public class CustomArrayList<T> implements CustomList<T> {
 	
 	Object[] items = new Object[10];
-	int indexCount = 0;
+	int size = 0;
 	
 	
 	@Override
 	public boolean add(T item) {
-		if (indexCount == items.length) {
-			Object[] newItemsList = Arrays.copyOf(items, items.length * 2);
-			items = newItemsList;
+		if (size == items.length) {
+			items = Arrays.copyOf(items, items.length * 2);
 		}
-		items[indexCount] = item;
-		indexCount++;
+		items[size] = item;
+		size++;
 		return true;
 	}
 
 	@Override
 	public int getSize() {
-		return indexCount;
+		return size;
 	}
 
 	@SuppressWarnings("unchecked")
